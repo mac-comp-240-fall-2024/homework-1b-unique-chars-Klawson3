@@ -1,12 +1,14 @@
-/*
- * TODO: Add an appropriate descriptive comment here
+/* Keaton Lawson
+ * This file contains tests for the `hasUniqueChars` function, which checks if a string contains all unique characters except for spaces.
+ * The test cases will ensure proper functionality of the function, including cases where the function should return `true`, `false`, 
+ * and where it should fail due to invalid characters.
  */
 
 #include <stdio.h>    // printf
 #include <stdbool.h>  // to define a boolean type and true, false
 #include <string.h>   // strcpy  to copy a string
 #include <assert.h>
-
+#include "binary_convert.h"
 
 // declaration of function from hasUniqueChars.c
 bool hasUniqueChars(char * inputStr);
@@ -50,6 +52,50 @@ int main() {
   assert(ok);
   
   // TODO: add your tests here
+  // Test 3: test string with space being the only repeat, should return true
+  strcpy(string3, "a b c d e f g h");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
+
+  // Test 4: another case with unique characters including numbers
+  strcpy(string3, "1234567890");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
+
+  // Test 5: a string with repeated characters (should return false)
+  strcpy(string3, "unique characters repeated");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));  // Expecting false
+
+  // Test 6: string with special characters (should return true)
+  strcpy(string3, "!@#$%^&*()");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
+
+  // Test 7: test a string with repeated special characters (should return false)
+  strcpy(string3, "!@#$%^&*()@");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));  // Expecting false
+
+  // Test 8: empty string (should return true)
+  strcpy(string3, "");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
+
+  // Test 9: very short string with repeated characters (should return false)
+  strcpy(string3, "aa");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));  // Expecting false
+
+  // Test 10: very short string with unique characters (should return true)
+  strcpy(string3, "a!");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
+
+  // Test 11: test string with all printable characters (should return true)
+  strcpy(string3, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+[]{}|;:',.<>?/`~ ");
+  ok = hasUniqueChars(string3);
+  assert(ok);  // Expecting true
 
 
 

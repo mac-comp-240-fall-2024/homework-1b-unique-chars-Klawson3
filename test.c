@@ -8,7 +8,7 @@
 #include <stdbool.h>  // to define a boolean type and true, false
 #include <string.h>   // strcpy  to copy a string
 #include <assert.h>
-
+#include "binary_convert.h"
 
 // declaration of function from hasUniqueChars.c
 bool hasUniqueChars(char * inputStr);
